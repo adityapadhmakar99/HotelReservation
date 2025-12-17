@@ -1,0 +1,25 @@
+package com.ap.constant;
+
+public enum HotelAmenity {
+    FREE_WIFI,
+    SWIMMING_POOL,
+    FITNESS_CENTER,
+    SPA,
+    RESTAURANT,
+    ROOM_SERVICE,
+    AIR_CONDITIONING,
+    PARKING,
+    BUSINESS_CENTER,
+    LAUNDRY_SERVICE,
+    PET_FRIENDLY,
+    AIRPORT_SHUTTLE,
+    CONCIERGE_SERVICE,
+    BAR_LOUNGE,
+    MEETING_ROOMS,
+    NON_SMOKING_ROOMS,
+    FAMILY_ROOMS,
+    GARDEN,
+    TERRACE,
+    HOT_TUB,
+    SAUNA
+}
