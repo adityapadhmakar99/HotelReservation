@@ -1,5 +1,7 @@
 package com.ap.model;
 
+import com.ap.constant.UserType;
+
 import java.util.UUID;
 
 public class User {
@@ -27,9 +29,5 @@ public class User {
     // For repository use only
     protected User() {
         // Default constructor for repository
-    }
-
-    public enum UserType {
-        CUSTOMER, ADMIN, HOTEL_STAFF
     }
 }

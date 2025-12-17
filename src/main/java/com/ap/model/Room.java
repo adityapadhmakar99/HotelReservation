@@ -1,5 +1,7 @@
 package com.ap.model;
 
+import com.ap.constant.RoomStatus;
+
 import java.util.UUID;
 
 public class Room {
@@ -31,8 +33,4 @@ public class Room {
     public RoomStatus getStatus() { return status; }
 
     public void setStatus(RoomStatus status) { this.status = status; }
-
-    public enum RoomStatus {
-        AVAILABLE, OCCUPIED, MAINTENANCE, RESERVED
-    }
 }

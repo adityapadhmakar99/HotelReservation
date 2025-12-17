@@ -1,5 +1,6 @@
 package com.ap.service;
 
+import com.ap.constant.RoomStatus;
 import com.ap.model.Hotel;
 import com.ap.model.Room;
 import com.ap.model.RoomType;
@@ -62,7 +63,7 @@ public class HotelService {
         // For now, return all rooms that are marked as available
         List<Room> availableRooms = new ArrayList<>();
         for (Room room : hotel.getRooms()) {
-            if (room.getStatus() == Room.RoomStatus.AVAILABLE) {
+            if (room.getStatus() == RoomStatus.AVAILABLE) {
                 availableRooms.add(room);
             }
         }

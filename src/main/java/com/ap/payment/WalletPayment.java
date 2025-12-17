@@ -20,7 +20,7 @@ public class WalletPayment implements PaymentMethod {
 
     @Override
     public String getPaymentMethodName() {
-        return "Digital Wallet";
+        return "Wallet";
     }
 
     @Override

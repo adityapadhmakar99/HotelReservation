@@ -2,6 +2,8 @@ package com.ap.service;
 
 import com.ap.constant.NotificationType;
 import com.ap.constant.PaymentStatus;
+import com.ap.constant.ReservationStatus;
+import com.ap.constant.RoomStatus;
 import com.ap.model.*;
 import com.ap.notification.NotificationService;
 import com.ap.payment.PaymentContext;
@@ -60,7 +62,7 @@ public class ReservationService {
         userReservations.computeIfAbsent(user.getId(), k -> new ArrayList<>()).add(reservation);
         
         // Update room status
-        room.setStatus(Room.RoomStatus.RESERVED);
+        room.setStatus(RoomStatus.RESERVED);
         
         return reservation;
     }
@@ -71,7 +73,7 @@ public class ReservationService {
         
         if (payment != null && payment.getStatus() == PaymentStatus.COMPLETED) {
             reservation.setPayment(payment);
-            reservation.setStatus(Reservation.ReservationStatus.CONFIRMED);
+            reservation.setStatus(ReservationStatus.CONFIRMED);
             
             // Notify user
             String message = String.format("Your reservation %s has been confirmed. Total amount: $%.2f",
@@ -84,10 +86,10 @@ public class ReservationService {
         } else {
             // If payment fails, release the room
             Room room = reservation.getRoom();
-            room.setStatus(Room.RoomStatus.AVAILABLE);
+            room.setStatus(RoomStatus.AVAILABLE);
             
             // Update reservation status
-            reservation.setStatus(Reservation.ReservationStatus.CANCELLED);
+            reservation.setStatus(ReservationStatus.CANCELLED);
             
             // Notify user
             String message = String.format("Payment failed for reservation %s. Please try again.", 
@@ -111,10 +113,10 @@ public class ReservationService {
 
         // Update room status
         Room room = reservation.getRoom();
-        room.setStatus(Room.RoomStatus.AVAILABLE);
+        room.setStatus(RoomStatus.AVAILABLE);
         
         // Update reservation status
-        reservation.setStatus(Reservation.ReservationStatus.CANCELLED);
+        reservation.setStatus(ReservationStatus.CANCELLED);
         
         // Process refund if applicable
         if (reservation.getPayment() != null) {
@@ -150,7 +152,7 @@ public class ReservationService {
     private boolean isRoomAvailable(Room room, LocalDateTime checkInDate, LocalDateTime checkOutDate) {
         // In a real implementation, we would check the room's availability for the given dates
         // For now, we'll just check the room status
-        return room.getStatus() == Room.RoomStatus.AVAILABLE;
+        return room.getStatus() == RoomStatus.AVAILABLE;
     }
 
     private double calculateTotalAmount(Room room, LocalDateTime checkInDate, LocalDateTime checkOutDate) {

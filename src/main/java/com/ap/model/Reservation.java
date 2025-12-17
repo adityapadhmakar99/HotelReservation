@@ -1,5 +1,7 @@
 package com.ap.model;
 
+import com.ap.constant.ReservationStatus;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -35,8 +37,4 @@ public class Reservation {
 
     public void setStatus(ReservationStatus status) { this.status = status; }
     public void setPayment(Payment payment) { this.payment = payment; }
-
-    public enum ReservationStatus {
-        PENDING, CONFIRMED, CANCELLED, CHECKED_IN, CHECKED_OUT, NO_SHOW
-    }
 }
